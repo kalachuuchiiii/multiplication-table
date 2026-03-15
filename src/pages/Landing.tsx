@@ -12,7 +12,7 @@ const Landing = () => {
     <Layout>
       <header className="text-center">
         <h1 className=" text-2xl truncate lg:text-4xl font-semibold ">
-          the multiplication table
+          my multiplication table
         </h1>
         <p>practice the multiplication table by column</p>
       </header>
