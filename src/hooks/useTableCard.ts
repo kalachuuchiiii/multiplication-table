@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState, type ChangeEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { toTablesURL } from "../utils/toTablesURL";
 import type { Table } from "../constants/tables";
@@ -20,11 +20,9 @@ export const useTableCard = (table: Table) => {
     if (!answerInput.current || String(value).trim() !== String(currentRow.answer)) return;
     answerInput.current.value = "";
 
-    if (currentIndex < 8) {
+    if (currentIndex < (table.rows.length - 1)) {
       return setCurrentIndex((prev) => prev + 1);
     }
-
-    setCurrentIndex(0);
 
     if (!table.next || !isAutoNextColumn) {
       return navigate("/");
@@ -34,6 +32,10 @@ export const useTableCard = (table: Table) => {
       toTablesURL(table.next, isRandomSequencing, isAutoNextColumn)
     );
   };
+
+  useEffect(() => {
+     setCurrentIndex(0);
+  }, [table.name])
 
   return {
     onChange,

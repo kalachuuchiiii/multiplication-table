@@ -27,7 +27,7 @@ export const TableCard = ({ table }: { table: Table }) => {
         />
       </main>
       <footer className="">
-        <div>{currentIndex} / 9</div>
+        <div>{currentIndex} / {table.rows.length}</div>
         <NavLink to={"/"} className=" text-center hover:underline ">
           main menu
         </NavLink>
